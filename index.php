@@ -180,7 +180,12 @@ body {
         $('form').bind('submit', function (event) {
 
 		event.preventDefault();// using this page stop being refreshing 
-
+         var msg=$("#msg").val();
+         if(msg == "" || msg == " "){
+		 $("#msg").val("");
+		  
+	 }
+	 else{
           $.ajax({
             type: 'POST',
             url: 'find.php',
@@ -188,11 +193,7 @@ body {
             success: function (response) {
               //alert('form was submitted'+response);
               $("#msg").val("");
-		    if(msg == "" || msg == " "){
-		  	$("#msg").val("");
-		    }
-		    else
-		    {
+		    
 			  var obj = jQuery.parseJSON(response);
 			
 			  var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
@@ -208,10 +209,11 @@ body {
 			 }
 			  $("div#chat").append(txtval).html();
 			  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
-            }
+           
 	    }
             
           });
+	 }
          });
       });
 
