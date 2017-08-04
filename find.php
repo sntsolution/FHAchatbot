@@ -34,7 +34,7 @@ if(isset($_REQUEST["msg"]))
 				
 				$data2=$res2->fetch_assoc();
 				$id=$data2['Id'];
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$data2['Msg']					,"nid"=>$iid);	
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$data2['Msg'],"nid"=>$iid);	
 				echo json_encode($json_array);
 			}
 			
@@ -86,7 +86,7 @@ if(isset($_REQUEST["msg"]))
 						$query="update `registration` set Password='$newpass'where UId='$uid'";
 						$result=$con->query($query);
 						//mail($to,$sub,$body);
-						$json_array["chat"]=array("user"=>$msg,"bot"=>"Your Visitor’s Pass has been sent to you via email, Please check your email.","Id"=>$uid);	
+						$json_array["chat"]=array("user"=>$msg,"bot"=>"Your Visitorâ€™s Pass has been sent to you via email, Please check your email.","Id"=>$uid);	
 						echo json_encode($json_array);
 					}
 					else if($count5>0 && $qid == 2)
