@@ -188,6 +188,9 @@ body {
             success: function (response) {
               //alert('form was submitted'+response);
               $("#msg").val("");
+		    if(msg == "" || msg == " "){
+		  	$("#msg").val("");
+		    }
 			  var obj = jQuery.parseJSON(response);
 			
 			  var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
