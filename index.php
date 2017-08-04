@@ -40,14 +40,14 @@
 }
 .user
 {
-	background-color:#a2835e;
+	background-color:#2f6d4d;
 	float: right;
 	border-radius: 25px;
     padding: 20px;
 }
 .bot
 {
-	background-color:#5c83a3;
+	background-color:#fdb018;
 	float: left;
 	border-radius: 25px;
     padding: 20px;
@@ -64,13 +64,12 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);	
 body {
  font-family: 'Open Sans', sans-serif;
-  
+ 
   padding-top: 15px;
   padding-bottom: 15px;
 }
 #chatborder {
-      
-    background-image: url('img/bkg.jpg');
+    background-color: #FFF2E7;
     border-width: 3px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -79,14 +78,14 @@ body {
     padding-top: 10px;
     padding-right: 20px;
     padding-left: 15px;
-    border-radius: 15px;
-    width: 316px;
+    border-radius: 4px;
+    width: 270px;
     height: 470px;
 }
 .chatlog {
    font: 15px arial, sans-serif;
    height: 400px;
-   width: 298px;
+   width: 277px;
    
 }
 #msg {
@@ -99,30 +98,31 @@ body {
 }
 .user
 {
-	background-color: white;
+	background-color: #F5AC77;
 	float: right;
 	border-radius: 5px;
-    	padding: 13px;
-    	color: black;
+    padding: 13px;
+    color: white;
 	border: 5px solid transparent;
-     	right: auto;
-    	left: -10px;
-    	border-right-color: #3588eb;
-    	border-left-color: transparent;
+    right: auto;
+	left: -10px;
+    
+    border-left-color: transparent;
 	font-family: 'Open Sans', sans-serif;
-	margin-left: 42%;
+	margin-left: 35%;
 }
 .bot
 {
-    background-color: #ffffe6;
+    background-color:white;
     float: left;
     border-radius: 5px;
     padding: 13px;
     opacity: 0.9;
+    color: black;
     top: 10px;
     right: -10px;
     border: 5px solid transparent;
-    border-left-color: #3588eb;
+    
     font-family: 'Open Sans', sans-serif;
 }
 #chat{
@@ -229,5 +229,6 @@ body {
 <input type="hidden" name="UId" id="UId" />
 <input type="hidden" name="id" id="id" />
 </form>
+
 </body>
 </html>
