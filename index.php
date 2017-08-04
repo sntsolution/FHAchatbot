@@ -191,6 +191,8 @@ body {
 		    if(msg == "" || msg == " "){
 		  	$("#msg").val("");
 		    }
+		    else
+		    {
 			  var obj = jQuery.parseJSON(response);
 			
 			  var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
@@ -207,6 +209,7 @@ body {
 			  $("div#chat").append(txtval).html();
 			  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
             }
+	    }
             
           });
          });
