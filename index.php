@@ -201,7 +201,7 @@ body {
 			  var obj = jQuery.parseJSON(response);
 			
 			  var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
-			 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+			// alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 			 if(typeof obj.chat.cid != "undefined"){
 			 	$("#Id").val(obj.chat.cid);
 			 }
