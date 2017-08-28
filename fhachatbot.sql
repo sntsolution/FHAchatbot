@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2017 at 07:27 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Generation Time: Aug 28, 2017 at 07:20 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -138,7 +140,8 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`UId`, `Name`, `CompanyName`, `Email`, `Password`) VALUES
-(1, 'Charmi Kothari', 'SNT Solution', 'charmikothari35@gmail.com', '3884');
+(1, 'Charmi Kothari', 'SNT Solution', 'charmikothari35@gmail.com', '8457'),
+(2, 'Sunay Patel', 'snt solutions', 'sunay@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -159,7 +162,7 @@ CREATE TABLE `rejection_master` (
 
 INSERT INTO `rejection_master` (`id`, `uid`, `reject_reason`, `event_name`) VALUES
 (1, 1, 'Your event atendee criteria doesn\'t match', 'Hospitality'),
-(2, 2, '', '');
+(2, 2, 'Your event attendee criteria doesn\'t match', 'Trade show');
 
 -- --------------------------------------------------------
 
@@ -171,14 +174,14 @@ CREATE TABLE `visitor` (
   `id` int(22) NOT NULL,
   `question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `visitor`
 --
 
 INSERT INTO `visitor` (`id`, `question`, `answer`) VALUES
-(1, 'Hi', 'Hi, Chose from the following<br>\n1.Exhibition Registration<br>\n2.Overseas exhibitor');
+(1, 'Hi', 'Hi, Chose from the following<br>1.Exhibition Registration<br>2.Overseas exhibitor');
 
 -- --------------------------------------------------------
 
@@ -189,7 +192,7 @@ INSERT INTO `visitor` (`id`, `question`, `answer`) VALUES
 CREATE TABLE `visitor_ol_reg` (
   `id` int(22) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `visitor_ol_reg`
@@ -212,15 +215,15 @@ CREATE TABLE `visitor_option` (
   `id` int(22) NOT NULL,
   `question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `visitor_option`
 --
 
 INSERT INTO `visitor_option` (`id`, `question`, `answer`) VALUES
-(1, 'Exhibition Registration', 'Welcome,<br>which type of registration you prefer?<br>1.Onsite registration<br>2.Online Registration'),
-(2, 'Overseas exhibitor', '');
+(1, 'Exhibition Registration', 'Welcome,<br>Chose from the following<br>1.Onsite registration<br>2.Online Registration<br>3. Group Delegation / Registration<br>4.Student Visit<br> 5.Access to different shows'),
+(2, 'Overseas exhibitor', 'Welcome,<br>Chose from the following<br>1.Official Travel Agent<br>2.Official Hotels<br>3. Visa / LOI<br>4. About Singapore');
 
 -- --------------------------------------------------------
 
@@ -233,7 +236,7 @@ CREATE TABLE `visitor_opt_two` (
   `question` varchar(255) NOT NULL,
   `answer` text NOT NULL,
   `eid` int(22) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `visitor_opt_two`
@@ -241,7 +244,14 @@ CREATE TABLE `visitor_opt_two` (
 
 INSERT INTO `visitor_opt_two` (`id`, `question`, `answer`, `eid`) VALUES
 (1, 'Onsite Registration', '<a href=\"http://www.foodnhotelasia.com/essential-info/2-venues-1-mega-show/overview-map-of-singapore-expo/\" target=\"_blank\">Map of Singapore Expo</a><br><a href=\"www.foodnhotelasia.com/essential-info/2-venues-1-mega-show/overview-map-of-suntec-singapore/\" target=\"_blank\"> Map of Suntec Singapore Expo</a>', 1),
-(2, 'Online Registration', 'Choose from following<br>1. Pre-registration status<br>2. Why rejected<br>3. How to appeal<br>4. Resend confirmation email<br>5. Business Matching', 1);
+(2, 'Online Registration', 'Choose from following<br>1. Pre-registration status<br>2. Why rejected<br>3. How to appeal<br>4. Resend confirmation email<br>5. Business Matching', 1),
+(3, 'Official Travel Agent', 'Click <a href=\"http://www.foodnhotelasia.com/essential-info/official-hotels-rates/\" target=\"_blank\"> Here </a>', 2),
+(4, 'Official Hotels', 'Click <a href=\"http://www.foodnhotelasia.com/essential-info/official-hotels-rates/\" target=\"_blank\"> Here </a>', 2),
+(5, 'About Singapore', 'Click <a href=\"http://www.visitsingapore.com/en.html\" target=\"_blank\"> Here </a>', 2),
+(6, 'Group Delegation / Registration', 'Click <a href=\"http://www.foodnhotelasia.com/to-visit/visitor-registration/\" target=\"_blank\">here </a>', 1),
+(7, 'Student Visit', 'Click <a href=\"http://www.foodnhotelasia.com/to-visit/why-visit/\" target=\"_blank\">here </a>', 1),
+(8, 'Access to different shows', 'Click <a href=\"http://www.foodnhotelasia.com/ptm.2016/showcat/main.asp\" target=\"_blank\">here </a>', 1),
+(9, 'Visa / LOI', 'Click <a href=\"http://www.foodnhotelasia.com/essential-info/travel-visa-application/\" target=\"_blank\">here </a>', 2);
 
 --
 -- Indexes for dumped tables
@@ -336,7 +346,7 @@ ALTER TABLE `qa`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `UId` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UId` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rejection_master`
 --
@@ -361,7 +371,8 @@ ALTER TABLE `visitor_option`
 -- AUTO_INCREMENT for table `visitor_opt_two`
 --
 ALTER TABLE `visitor_opt_two`
-  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

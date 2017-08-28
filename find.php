@@ -11,7 +11,8 @@ if(isset($_REQUEST["msg"]))
 	{
 		$data=$res->fetch_assoc();
 		$cid=$data["id"];
-		$json_array["chat"]=array("user"=>$msg,"bot"=>$data['answer'],"cid"=>$cid);	
+		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>$cid);	
 		echo json_encode($json_array);
 		
 	}// cruise count if
@@ -25,7 +26,15 @@ if(isset($_REQUEST["msg"]))
 		{
 			$data1=$res1->fetch_assoc();
 			$fid=$data1["id"];
-			$json_array["chat"]=array("user"=>$msg,"bot"=>$data1['answer'],"vid"=>$fid);
+			if($fid == 1){
+		
+				$replies["reply"]=array("Onsiteregistration"=>"Onsite registration","OnlineRegistration"=>"Online Registration","GroupDelegationRegistration"=>"Group Delegation / Registration","StudentVisit"=>"Student Visit","Accesstodifferentshows"=>"Access to different shows");
+			}
+			else if($fid == 2){
+			
+				$replies["reply"]=array("OfficialTravelAgent"=>"Official Travel Agent","OfficialHotels"=>"Official Hotels","Visa/LOI"=>"Visa / LOI","AboutSingapore"=>"About Singapore");
+			}
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"vid"=>$fid);
 		echo json_encode($json_array);
 		}
 		elseif(isset($_REQUEST['vid']) && $_REQUEST['vid']!= "")
@@ -43,10 +52,24 @@ if(isset($_REQUEST["msg"]))
 			$count3=$res3->num_rows;
 			if($count3>0)
 			{
+			$vid=$_REQUEST['vid'];
 				$data3=$res3->fetch_assoc();
 				$id=$data3['eid'];
+				$tid=$data3['id'];
+				if($tid == 1 || $tid ==3 || $tid ==4 || $tid ==5 || $tid ==6 || $tid ==7 || $tid ==8 || $tid == 9)
+				{
 				$json_array["chat"]=array("user"=>$msg,"bot"=>$data3['answer'],"nid"=>$id);	
 				echo json_encode($json_array);
+				}
+				elseif($tid == 2)
+				{
+				
+					$replies["reply"]=array("Pre-registration status"=>"Pre-registration status","Why rejected"=>"Why rejected","How to appeal"=>"How to appeal","Resend confirmation email"=>"Resend confirmation email","Business Matching"=>"Business Matching");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"nid"=>$id);	
+				echo json_encode($json_array);
+				}
+				
+				
 			}
 			elseif(isset($_REQUEST['id']) && $_REQUEST['id']!= "")
 		{
@@ -72,7 +95,7 @@ if(isset($_REQUEST["msg"]))
 				}
 				elseif($oid == 3)
 				{
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click here for more info");	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.foodnhotelasia.com/about-fha/\" target=\"_blank\">here</a> for more info");	
 				echo json_encode($json_array);
 				}
 				elseif($oid == 4)
@@ -211,10 +234,9 @@ if(isset($_REQUEST["msg"]))
 				}
 			else
 				{
-				$json_array["chat"]=array("user"=>$msg,"bot"=>"Please Chose from the following<br>
-1.Exhibition Registration<br>
-2.Overseas exhibitor");	
-				echo json_encode($json_array);
+				$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
+		echo json_encode($json_array);
 				}
 			}
 			
@@ -222,25 +244,23 @@ if(isset($_REQUEST["msg"]))
 		
 		else
 		{	
-		$json_array["chat"]=array("user"=>$msg,"bot"=>"Please Chose from the following<br>
-1.Exhibition Registration<br>
-2.Overseas exhibitor
-");	
+		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
 		echo json_encode($json_array);
 		}
 	}
 	}
 		else
 		{
-			$json_array["chat"]=array("user"=>$msg,"bot"=>"Please Chose from the following<br>
-1.Exhibition Registration<br>
-2.Overseas exhibitor");	
+		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
 		echo json_encode($json_array);
 		}
 		}
 	else
 	{
-		$json_array["chat"]=array("user"=>$msg,"bot"=>"Sorry ,I am not able to get you.");	
+	    $id=$_REQUEST['Id'];
+		$json_array["chat"]=array("user"=>$msg,"bot"=>"Sorry I am not able to get you");	
 		echo json_encode($json_array);
 	}
 }
