@@ -158,7 +158,7 @@ body {
 			
 					     for(var key in obj.chat.bot.reply) {
 					    var value = obj.chat.bot.reply[key];
-					    alert("value"+value);
+					    //alert("value"+value);
 					     html +=           
 					                "<br><input type='button' value='"+value+"' name='PASS' onClick='myfunction(this.value)' class='txtopt'/>";
 									var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>"; 
@@ -170,7 +170,7 @@ body {
 				}	
 			
 			  //var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>";
-			 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+			// alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 			 if(typeof obj.chat.cid != "undefined"){
 			 	$("#Id").val(obj.chat.cid);
 			 }
@@ -213,15 +213,15 @@ function myfunction(str){
             data: {msg: str,Id:Id,id:id,UId:UId,vid:vid,wid:wid},
             success: function (response) {
              $("#msg").val("");
-		      alert(response);
+		      //alert(response);
 			  var obj = jQuery.parseJSON(response);	
-			  alert(obj.chat.user+obj.chat.bot);
+			  //alert(obj.chat.user+obj.chat.bot);
 			  
 			   if(typeof obj.chat.bot.reply != "undefined"){
 			  
                for(var key in obj.chat.bot.reply) {
     var value = obj.chat.bot.reply[key];
-    alert("value"+value);
+    //alert("value"+value);
      html1 +=           
                 "<br><input type='button' value='"+value+"' name='opt' class='txtopt' onClick='myfunction(this.value)' class='txtopt' />";
                 
@@ -250,7 +250,7 @@ function myfunction(str){
 			  }
 			  else{
 			  	 var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
-				 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+				 //alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 				 if(typeof obj.chat.cid != "undefined"){
 				 	$("#Id").val(obj.chat.cid);
 				 }
