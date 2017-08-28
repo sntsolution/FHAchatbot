@@ -199,7 +199,7 @@ body {
 
 
 function myfunction(str){
-	alert(str);
+	//alert(str);
 	var Id = $("#Id").val();
 	var UId = $("#UId").val(); 
 	var id = $("#id").val();
