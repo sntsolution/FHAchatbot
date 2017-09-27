@@ -1,64 +1,8 @@
 <html>
 <head>
-<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--<style>
-	body {
-  font: 15px arial, sans-serif;
-  background-color: #d9d9d9;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-#chatborder {
-      
-    background-color: #f6f9f6;
-    border-width: 3px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-left: 15px;
-    border-radius: 15px;
-    width: 21%;
-    height: 470px;
-}
-.chatlog {
-   font: 15px arial, sans-serif;
-   height: 400px;
-   width: 100%;
-   
-}
-#msg {
-     font: 17px arial, sans-serif;
-    height: 38px;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-.user
-{
-	background-color:#2f6d4d;
-	float: right;
-	border-radius: 25px;
-    padding: 20px;
-}
-.bot
-{
-	background-color:#fdb018;
-	float: left;
-	border-radius: 25px;
-    padding: 20px;
-}
-#chat{
-	overflow-y: auto;
-}
-.uinput{
-	
-}
-</style>-->
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script src="js/jquery.min.js"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);	
@@ -173,13 +117,23 @@ body {
 	height: 150px;
 	overflow-y: auto;
 }
+.txtopt{
+	
+	background-color: transparent;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #3181f6;
+	margin-bottom: 5%;
+	height:6%;
+}
 </style>
 <script type="text/javascript">
  $(function () {
  	 $("#msg").focus();
  	 
  	 
- var initialmsg="<p class='chat-content bot'>Welcome to FHAChatbot. Greetings with 'Hi' to know available options.</p>";
+ var initialmsg="<p class='chat-content bot'>Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for?<br><input type='button' value='Exhibiting' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Visiting' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Competition' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Activities' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Conference' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Media' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='General Information' name='PASS' onClick='myfunction(this.value)' class='txtopt'/></p>";
+ 
  $("div#chat").append(initialmsg);
         $('form').bind('submit', function (event) {
 
@@ -190,6 +144,7 @@ body {
 		  
 	 }
 	 else{
+	 	var html="";
           $.ajax({
             type: 'POST',
             url: 'find.php',
@@ -199,8 +154,26 @@ body {
               $("#msg").val("");
 		    
 			  var obj = jQuery.parseJSON(response);
+			  
+			if(typeof obj.chat.bot.text != "undefined"){
+				 html+=obj.chat.bot.text["textb"];
+			}
+			   if(typeof obj.chat.bot.reply != "undefined"){
+			  
+					     for(var key in obj.chat.bot.reply) {
+					    var value = obj.chat.bot.reply[key];
+					    alert("value"+value);
+					     html +=           
+					                "<br><input type='button' value='"+value+"' name='PASS' onClick='myfunction(this.value)' class='txtopt'/>";
+									var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>"; 
+				}
+				
+			   
+			   }else{
+					var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
+				}	
 			
-			  var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
+			  //var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>";
 			 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 			 if(typeof obj.chat.cid != "undefined"){
 			 	$("#Id").val(obj.chat.cid);
@@ -217,7 +190,27 @@ body {
 			 if(typeof obj.chat.wid != "undefined"){
 			 	$("#wid").val(obj.chat.wid);
 			 }
+			  if(typeof obj.chat.rid != "undefined"){
+			 	$("#rid").val(obj.chat.rid);
+			 }
+			  if(typeof obj.chat.sid != "undefined"){
+			 	$("#sid").val(obj.chat.sid);
+			 }
+			  if(typeof obj.chat.hid != "undefined"){
+			 	$("#hid").val(obj.chat.hid);
+			 }
+			  if(typeof obj.chat.kid != "undefined"){
+			 	$("#kid").val(obj.chat.kid);
+			 }
+			  if(typeof obj.chat.lid != "undefined"){
+			 	$("#lid").val(obj.chat.lid);
+			 }
+			 if(typeof obj.chat.xid != "undefined"){
+			 	$("#xid").val(obj.chat.xid);
+			 }
+			 
 			  $("div#chat").append(txtval).html();
+			  
 			  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
            
 	    }
@@ -227,6 +220,128 @@ body {
          });
       });
 
+
+function myfunction(str){
+	alert(str);
+	var Id = $("#Id").val();
+	var UId = $("#UId").val(); 
+	var id = $("#id").val();
+	var wid= $("#wid").val();
+	var vid= $("#vid").val();
+	var rid= $("#rid").val();
+	var sid= $("#sid").val();
+	var hid= $("#hid").val();
+	var kid= $("#kid").val();
+	var lid= $("#lid").val();
+	var xid= $("#xid").val();
+	var html1="";
+	      $.ajax({
+            type: 'POST',
+            url: 'find.php',
+            data: {msg: str,Id:Id,id:id,UId:UId,vid:vid,wid:wid,rid:rid,sid:sid,hid:hid,kid:kid,lid:lid,xid:xid},
+            success: function (response) {
+             $("#msg").val("");
+		      alert(response);
+			  var obj = jQuery.parseJSON(response);	
+			   var btntext ="";
+			if(typeof obj.chat.bot.text != "undefined"){
+				 html1+=obj.chat.bot.text["textb"];
+			}
+			  alert(obj.chat.user+obj.chat.bot);
+			  
+			   if(typeof obj.chat.bot.reply != "undefined"){
+			  
+               for(var key in obj.chat.bot.reply) {
+    var value = obj.chat.bot.reply[key];
+    alert("value"+value);
+     html1 +=           
+                "<br><input type='button' value='"+value+"' name='opt' class='txtopt' onClick='myfunction(this.value)' class='txtopt' />";
+                
+               
+                
+}
+ var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+html1 +"<\p>";
+  if(typeof obj.chat.cid != "undefined"){
+				 	$("#Id").val(obj.chat.cid);
+				 }
+				 if(typeof obj.chat.uid != "undefined"){
+				 	$("#UId").val(obj.chat.uid);
+				 }
+				 if(typeof obj.chat.nid != "undefined"){
+				 	$("#id").val(obj.chat.nid);
+				 }
+				 if(typeof obj.chat.vid != "undefined"){
+				 	$("#vid").val(obj.chat.vid);
+				 }
+				 if(typeof obj.chat.wid != "undefined"){
+				 	$("#wid").val(obj.chat.wid);
+				 }
+				 if(typeof obj.chat.rid != "undefined"){
+				 	$("#rid").val(obj.chat.rid);
+				 }
+				 if(typeof obj.chat.sid != "undefined"){
+				 	$("#sid").val(obj.chat.sid);
+				 }
+				 if(typeof obj.chat.hid != "undefined"){
+				 	$("#hid").val(obj.chat.hid);
+				 }
+				  if(typeof obj.chat.kid != "undefined"){
+				 	$("#kid").val(obj.chat.kid);
+				 }
+				 if(typeof obj.chat.lid != "undefined"){
+				 	$("#lid").val(obj.chat.lid);
+				 }
+				 if(typeof obj.chat.xid != "undefined"){
+				 	$("#xid").val(obj.chat.xid);
+				 }
+ $("div#chat").append(txtval).html();
+ $("#msg").focus();
+			  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
+			  }
+			  else{
+			  	 var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
+				 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+				 if(typeof obj.chat.cid != "undefined"){
+				 	$("#Id").val(obj.chat.cid);
+				 }
+				 if(typeof obj.chat.uid != "undefined"){
+				 	$("#UId").val(obj.chat.uid);
+				 }
+				 if(typeof obj.chat.nid != "undefined"){
+				 	$("#id").val(obj.chat.nid);
+				 }
+				 if(typeof obj.chat.vid != "undefined"){
+				 	$("#vid").val(obj.chat.vid);
+				 }
+				 if(typeof obj.chat.wid != "undefined"){
+				 	$("#wid").val(obj.chat.wid);
+				 }
+				 if(typeof obj.chat.rid != "undefined"){
+				 	$("#rid").val(obj.chat.rid);
+				 }
+				 if(typeof obj.chat.sid != "undefined"){
+				 	$("#sid").val(obj.chat.sid);
+				 }
+				 if(typeof obj.chat.hid != "undefined"){
+				 	$("#hid").val(obj.chat.hid);
+				 }
+				 if(typeof obj.chat.kid != "undefined"){
+				 	$("#kid").val(obj.chat.kid);
+				 }
+				 if(typeof obj.chat.lid != "undefined"){
+				 	$("#lid").val(obj.chat.lid);
+				 }
+				  if(typeof obj.chat.xid != "undefined"){
+				 	$("#xid").val(obj.chat.xid);
+				 }
+				  $("div#chat").append(txtval).html();
+				  $("#msg").focus();
+				  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
+			  }
+         }
+		});
+       
+}
 
 </script>
 </head>
@@ -248,6 +363,12 @@ body {
 <input type="hidden" name="id" id="id" />
 <input type="hidden" name="vid" id="vid" />
 <input type="hidden" name="wid" id="wid" />
+<input type="hidden" name="rid" id="rid" />
+<input type="hidden" name="sid" id="sid" />
+<input type="hidden" name="hid" id="hid" />
+<input type="hidden" name="kid" id="kid" />
+<input type="hidden" name="lid" id="lid" />
+<input type="hidden" name="xid" id="xid" />
 </form>
 
 </body>
