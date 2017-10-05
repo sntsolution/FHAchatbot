@@ -11,6 +11,7 @@ if(isset($_REQUEST["msg"]))
 	{
 		$data=$res->fetch_assoc();
 		$cid=$data["id"];
+		$replies["text"]=array("textb"=>"Great! So what can I help you with today?");
 		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor","Pre-Event Preparation "=>"Pre-Event Preparation","Whats New"=>"Whats New","Key Statistics"=>"Key Statistics","Show Directory"=>"Show Directory","VIP Qualification"=>"VIP Qualification","Social media"=>"Social media","Free Seminars at the exhibition"=>"Free Seminars at the exhibition");
 		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>$cid);	
 		echo json_encode($json_array);
