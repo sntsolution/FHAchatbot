@@ -387,6 +387,7 @@ elseif($_REQUEST["msg"] == "Exhibiting" || $_REQUEST["msg"] == "Competition" || 
 elseif($_REQUEST["msg"] == "General Information")
 {
 $rid=1;
+	$replies["text"]=array("textb"=>"Great! So what can I help you with today?");
 	$replies["reply"]=array("Opening Hours"=>"Opening Hours","Dates/Day"=>"Dates/Day","Venues"=>"Venues","Admission"=>"Admission","ProWine Asia"=>"ProWine Asia");
 		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"rid"=>$rid);	
 		echo json_encode($json_array);
