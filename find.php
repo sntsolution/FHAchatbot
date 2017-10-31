@@ -72,6 +72,13 @@ if(isset($_REQUEST["msg"]))
 				echo json_encode($json_array);
 				
 			}
+			else
+				{
+				$replies["text"]=array("textb"=>"Please Choose from the following. If you want to ask something else please reply with reset ");
+				$replies["reply"]=array("How do I register for the Exhibition?"=>"How do I register for the Exhibition?","What are the different tools to help me facilitate my visit to FHA "=>"What are the different tools to help me facilitate my visit to FHA","What is New at FHA2018"=>"What is New at FHA2018","Key Statistics of FHA2018"=>"Key Statistics of FHA2018","Do you have a show directory or guide?"=>"Do you have a show directory or guide?","How do I qualify as a VIP?"=>"How do I qualify as a VIP?","What are the FHA social media platform?"=>"What are the FHA social media platform?","Any free seminars on the show floor?"=>"Any free seminars on the show floor?","I am an overseas visitor. Any help on planning the trip?"=>"I am an overseas visitor. Any help on planning the trip?");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
+		echo json_encode($json_array);
+				}
 
 		}
 		elseif(isset($_REQUEST['vid']) && $_REQUEST['vid']!= "")
