@@ -11,8 +11,7 @@ if(isset($_REQUEST["msg"]))
 	{
 		$data=$res->fetch_assoc();
 		$cid=$data["id"];
-		$replies["text"]=array("textb"=>"Great! So what can I help you with today?");
-		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor","Pre-Event Preparation "=>"Pre-Event Preparation","Whats New"=>"Whats New","Key Statistics"=>"Key Statistics","Show Directory"=>"Show Directory","VIP Qualification"=>"VIP Qualification","Social media"=>"Social media","Free Seminars at the exhibition"=>"Free Seminars at the exhibition");
+		$replies["reply"]=array("How do I register for the Exhibition?"=>"How do I register for the Exhibition?","What are the different tools to help me facilitate my visit to FHA "=>"What are the different tools to help me facilitate my visit to FHA","What is New at FHA2018"=>"What is New at FHA2018","Key Statistics of FHA2018"=>"Key Statistics of FHA2018","Do you have a show directory or guide?"=>"Do you have a show directory or guide?","How do I qualify as a VIP?"=>"How do I qualify as a VIP?","What are the FHA social media platform?"=>"What are the FHA social media platform?","Any free seminars on the show floor?"=>"Any free seminars on the show floor?","I am an overseas visitor. Any help on planning the trip?"=>"I am an overseas visitor. Any help on planning the trip?");
 		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>$cid);	
 		echo json_encode($json_array);
 		
@@ -30,7 +29,7 @@ if(isset($_REQUEST["msg"]))
 			$fid=$data1["id"];
 			if($fid == 1){
 		$replies["text"]=array("textb"=>"Did you pre-register online already? How can i help you with the registration?");
-				$replies["reply"]=array("OnsiteregistrationforFHA"=>"Onsite registration for FHA","Onsite Registration for ProWine Asia"=>"Onsite Registration for ProWine Asia","Online Pre-registration for FHA"=>"Online Pre-registration for FHA","Online Pre-registration for ProWine Asia"=>"Online Pre-registration for ProWine Asia","GroupDelegationRegistration"=>"Group Delegation / Registration","StudentVisit"=>"Student Visit","Accesstodifferentshows"=>"Access to different shows");
+				$replies["reply"]=array("Can I register during the show days?"=>"Can I register during the show days?","Onsite Registration for ProWine Asia"=>"Onsite Registration for ProWine Asia","I want to find out more about the online registration / status of my FHA registration"=>"I want to find out more about the online registration / status of my FHA registration","Online Pre-registration for ProWine Asia"=>"Online Pre-registration for ProWine Asia","Are there any privileges for group registration?"=>"Are there any privileges for group registration?","Are students allowed into the exhibition?"=>"Are students allowed into the exhibition?","What are the other exhibitions I can visit with FHA visitor badge?"=>"What are the other exhibitions I can visit with FHA visitor badge?");
 				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"vid"=>$fid);
 		echo json_encode($json_array);
 			}
@@ -48,24 +47,19 @@ if(isset($_REQUEST["msg"]))
 		echo json_encode($json_array);
 			}
 			else if($fid == 4){
-			$replies["text"]=array("textb"=>"With 2 venues, there is more space for new happenings on the showfloor- from New exhibitors, New products, New competitions, New Speakers, New activities and more! Check out the list here");
+			$replies["text"]=array("textb"=>"FHA2018 is now BIGGER & BETTER with new happenings on the showfloor- from New exhibitors, New products, New competitions, New Speakers, New activities and more! Check out the list here");
 				$replies["reply"]=array("New Exhibitors"=>"New Exhibitors","New Products"=>"New Products","New Competitions"=>"New Competitions","New Speakers"=>"New Speakers","New Activities"=>"New Activities");
 				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"vid"=>$fid);
 		echo json_encode($json_array);
 			}
 			else if($fid == 5){
-			
+			$replies["text"]=array("textb"=>"Thank you for your interest! Below are some of the key statistics. ");
 				$replies["reply"]=array("Number of Exhibitors"=>"Number of Exhibitors","Number of Group Pavilions"=>"Number of Group Pavilions","Number of Countries"=>"Number of Countries","Size of exhibition space"=>"Size of exhibition space");
 				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"vid"=>$fid);
 		echo json_encode($json_array);
 			}
-			elseif($fid == 6)
-			{
-				$replies["reply"]=array("Visitors Guide"=>"Visitors Guide");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"vid"=>$fid);
-		echo json_encode($json_array);
-			}
-			else if($fid == 7 || $fid == 8 || $fid == 9){
+			
+			else if($fid == 6 || $fid == 7 || $fid == 8 || $fid == 9){
 			
 				$json_array["chat"]=array("user"=>$msg,"bot"=>$data1['answer'],"vid"=>$fid);
 		echo json_encode($json_array);
@@ -73,11 +67,12 @@ if(isset($_REQUEST["msg"]))
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"Id"=>'',"UId"=>'',"id"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');	
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
+
 		}
 		elseif(isset($_REQUEST['vid']) && $_REQUEST['vid']!= "")
 		{
@@ -106,7 +101,7 @@ if(isset($_REQUEST["msg"]))
 				elseif($tid == 2)
 				{
 				$replies["text"]=array("textb"=>"You can register for the exhibition at <a href=\"http://www.foodnhotelasia.com/to-visit/visitor-registration\" target=\"_blank\"> here </a>. Click on the link to address your specific need. ");
-					$replies["reply"]=array("Pre-registration status"=>"Pre-registration status","Why rejected"=>"Why rejected","How to appeal"=>"How to appeal","Resend confirmation email"=>"Resend confirmation email","Business Matching"=>"Business Matching");
+					$replies["reply"]=array("My pre-registration status"=>"My pre-registration status","Why am I rejected"=>"Why am I rejected","How do I appeal"=>"How do I appeal","Please resend my confirmation email"=>"Please resend my confirmation email","Is there any business matching tool?"=>"Is there any business matching tool?");
 					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"nid"=>$id);	
 				echo json_encode($json_array);
 				}
@@ -134,30 +129,30 @@ There are 6 specialised and 1 co-located event. Click here to find out more abou
 				$oid=$data4['id'];
 				if($oid == 1)
 				{
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.foodnhotelasia.com/to-visit/visitor-registration/\" target=\"_blank\">here</a> for more info");	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.foodnhotelasia.com/to-visit/visitor-registration/\" target=\"_blank\">here</a> for the status of your registration. ");	
 				echo json_encode($json_array);
 				}
 				elseif($oid == 2)
 				{
 					$wid=$oid;
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Please Provide Your Name","wid"=>$wid);	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Please provide your name so that we can retrieve the information","wid"=>$wid);	
 				echo json_encode($json_array);
 				}
 				elseif($oid == 3)
 				{
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.foodnhotelasia.com/about-fha/\" target=\"_blank\">here</a> for more info");	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.foodnhotelasia.com/about-fha/\" target=\"_blank\">here</a> for more information on the appeal process");	
 				echo json_encode($json_array);
 				}
 				elseif($oid == 4)
 				{
 					$wid=$oid;
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Provide Your Name","wid"=>$wid);	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Please provide your name so that we can send you the email","wid"=>$wid);	
 				echo json_encode($json_array);
 					
 				}
 				elseif($oid == 5)
 				{
-					$json_array["chat"]=array("user"=>$msg,"bot"=>"Click <a href=\"http://www.hotel-asia.com/related-competitions-events-and-conferences/#business-workshops\" target=\"_blank\">here</a> for more info");	
+					$json_array["chat"]=array("user"=>$msg,"bot"=>"Yes! Do you know that you can start fixing appointments with other attendees at the show, before it starts? Hurry! Make use of this useful tool to maximise your time at the show!");	
 				echo json_encode($json_array);
 				}
 				elseif($oid == 6)
@@ -321,17 +316,17 @@ There are 6 specialised and 1 co-located event. Click here to find out more abou
 elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 {
 $replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-		echo json_encode($json_array);
+$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 	
 }
 			else
 				{
 				$replies["text"]=array("textb"=>"Please Choose from the following. If you want to ask something else please reply with reset ");
-				$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor","Pre-Event Preparation "=>"Pre-Event Preparation","Whats New"=>"Whats New","Key Statistics"=>"Key Statistics","Show Directory"=>"Show Directory","VIP Qualification"=>"VIP Qualification","Social media"=>"Social media","Free Seminars at the exhibition"=>"Free Seminars at the exhibition");
-		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
-		echo json_encode($json_array);
+				$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				}
 			}
 			
@@ -339,25 +334,25 @@ $replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Compe
 		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 		{
 		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-		$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');	
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
 				echo json_encode($json_array);
 			
 		}
 		else
 		{	
 		$replies["text"]=array("textb"=>"Please Choose from the following. If you want to ask something else please reply with reset ");
-		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor","Pre-Event Preparation "=>"Pre-Event Preparation","Whats New"=>"Whats New","Key Statistics"=>"Key Statistics","Show Directory"=>"Show Directory","VIP Qualification"=>"VIP Qualification","Social media"=>"Social media","Free Seminars at the exhibition"=>"Free Seminars at the exhibition");
-		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
-		echo json_encode($json_array);
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 		}
 	}
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');	
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 	}
@@ -365,8 +360,8 @@ $replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Compe
 	elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 		{
 		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-		$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');	
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
 				echo json_encode($json_array);
 			
 		}
@@ -374,12 +369,12 @@ $replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Compe
 		else
 		{
 		$replies["text"]=array("textb"=>"Please Choose from the following. If you want to ask something else please reply with reset ");
-		$replies["reply"]=array("ExhibitionRegistration"=>"Exhibition Registration","Overseasexhibitor"=>"Overseas Exhibitor","Pre-Event Preparation "=>"Pre-Event Preparation","Whats New"=>"Whats New","Key Statistics"=>"Key Statistics","Show Directory"=>"Show Directory","VIP Qualification"=>"VIP Qualification","Social media"=>"Social media","Free Seminars at the exhibition"=>"Free Seminars at the exhibition");
+		$replies["reply"]=array("How do I register for the Exhibition?"=>"How do I register for the Exhibition?","What are the different tools to help me facilitate my visit to FHA "=>"What are the different tools to help me facilitate my visit to FHA","What is New at FHA2018"=>"What is New at FHA2018","Key Statistics of FHA2018"=>"Key Statistics of FHA2018","Do you have a show directory or guide?"=>"Do you have a show directory or guide?","How do I qualify as a VIP?"=>"How do I qualify as a VIP?","What are the FHA social media platform?"=>"What are the FHA social media platform?","Any free seminars on the show floor?"=>"Any free seminars on the show floor?","I am an overseas visitor. Any help on planning the trip?"=>"I am an overseas visitor. Any help on planning the trip?");
 		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies);	
 		echo json_encode($json_array);
 		}
 		}
-elseif($_REQUEST["msg"] == "Exhibiting" || $_REQUEST["msg"] == "Competition" || $_REQUEST["msg"] == "Activities" || $_REQUEST["msg"] == "Conference" || $_REQUEST["msg"] == "Media")
+elseif($_REQUEST["msg"] == "Exhibiting at FHA" || $_REQUEST["msg"] == "Know more about the competition" || $_REQUEST["msg"] == "Various activities @ FHA" || $_REQUEST["msg"] == "Media")
 {
 	$json_array["chat"]=array("user"=>$msg,"bot"=>"Great! So what can I help you with today?");	
 		echo json_encode($json_array);
@@ -387,7 +382,6 @@ elseif($_REQUEST["msg"] == "Exhibiting" || $_REQUEST["msg"] == "Competition" || 
 elseif($_REQUEST["msg"] == "General Information")
 {
 $rid=1;
-	$replies["text"]=array("textb"=>"Great! So what can I help you with today?");
 	$replies["reply"]=array("Opening Hours"=>"Opening Hours","Dates/Day"=>"Dates/Day","Venues"=>"Venues","Admission"=>"Admission","ProWine Asia"=>"ProWine Asia");
 		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"rid"=>$rid);	
 		echo json_encode($json_array);
@@ -429,8 +423,8 @@ $msg=$_REQUEST["msg"];
 		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 		{
 		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-		$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
 				echo json_encode($json_array);
 			
 		}	
@@ -479,9 +473,9 @@ $msg=$_REQUEST["msg"];
 				elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 				{
 				$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-				$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-						$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-						echo json_encode($json_array);
+				$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 					
 				}
 			}
@@ -585,18 +579,18 @@ $msg=$_REQUEST["msg"];
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 				}
 				elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 				{
 				$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-				$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-						$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-						echo json_encode($json_array);
+				$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 					
 				}
 				
@@ -604,9 +598,9 @@ $msg=$_REQUEST["msg"];
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 			
@@ -616,9 +610,9 @@ $msg=$_REQUEST["msg"];
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 			}
@@ -634,9 +628,9 @@ $msg=$_REQUEST["msg"];
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 		
@@ -644,9 +638,9 @@ $msg=$_REQUEST["msg"];
 			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 			{
 			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
-					echo json_encode($json_array);
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 				
 			}
 			}
@@ -654,8 +648,8 @@ $msg=$_REQUEST["msg"];
 		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 		{
 		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-		$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
 				echo json_encode($json_array);
 			
 		}
@@ -667,19 +661,322 @@ $msg=$_REQUEST["msg"];
 		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 		{
 		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-		$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
 				echo json_encode($json_array);
 			
 		}
 	
 }
+
+elseif($_REQUEST["msg"] == "Conference")
+{
+$aid=1;
+	$replies["reply"]=array("Conference Registration"=>"Conference Registration","Access to exhibition"=>"Access to exhibition","Speaking opportunities"=>"Speaking opportunities","Conference programme"=>"Conference programme","Pre and During conference"=>"Pre and During conference","Post show"=>"Post show","Overseas Delegates"=>"Overseas Delegates");
+		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"aid"=>$aid);	
+		echo json_encode($json_array);
+	
+}
+
+elseif(isset($_REQUEST['aid']) && $_REQUEST['aid'] != "")
+{
+$msg=$_REQUEST["msg"];
+		$qu1="select * from `conferenceinfo_option` where question like '%".$msg."%'";
+		$res1=$con->query($qu1);
+		$count1=$res1->num_rows;
+		if($count1 > 0)
+		{
+		$row=$res1->fetch_array();
+		$bid=$row['id'];
+		if($bid == 2 || $bid == 3)
+		{
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$row['answer'],"bid"=>$bid);	
+			echo json_encode($json_array);
+		}	
+		elseif($bid == 1)
+		{
+		$replies["text"]=array("textb"=>"Did you pre-register online already? How can i help you with the registration?");
+			$replies["reply"]=array("Onsite Registration and payment"=>"Onsite Registration and payment","Registration and payment before conference"=>"Registration and payment before conference","Group Delegation / Registration"=>"Group Delegation / Registration");
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"bid"=>$bid);	
+			echo json_encode($json_array);
+		}
+		elseif($bid == 4)
+		{
+		
+		$replies["text"]=array("textb"=>"The programme details will be made available from November 2017. Meanwhile, please log on <a href=\"http://www.foodnhotelasia.com/fha-conference/conference-highlights/\" target=\"_blank\"> Here</a>  for the Conference Highlights.");
+			$replies["reply"]=array("Programme Overview"=>"Programme Overview","Hotels & Resorts"=>"Hotels & Resorts","Food Manufacturing"=>"Food Manufacturing","Bakery Workshop"=>"Bakery Workshop","Central Kitchen Asia"=>"Central Kitchen Asia","Food Services"=>"Food Services","View bio and profile speakers"=>"View bio and profile speakers","View sessions and their respective venues"=>"View sessions and their respective venues");
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"bid"=>$bid);	
+			echo json_encode($json_array);
+		}
+		elseif($bid == 5)
+		{
+		$replies["text"]=array("textb"=>"Here are some important information for you when you plan your trip to and onsite at the conference venue.");
+		 
+		
+			$replies["reply"]=array("Collection of badges"=>"Collection of badges","Food provided (halal/ vegetarian/ non vegetarian)"=>"Food provided (halal/ vegetarian/ non vegetarian)","Parking rates and location"=>"Parking rates and location");
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"bid"=>$bid);	
+			echo json_encode($json_array);
+		}
+		elseif($bid == 6)
+		{
+		$replies["text"]=array("textb"=>"We hope you have gained valuable insights from the conference! Check out the post event materials here!");
+		 
+		
+			$replies["reply"]=array("Access to presentation slides and photos after conference"=>"Access to presentation slides and photos after conference","Letter of participation"=>"Letter of participation");
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"bid"=>$bid);	
+			echo json_encode($json_array);
+		}
+		elseif($bid == 7)
+		{
+		$replies["text"]=array("textb"=>"Welcome to Singapore! Check out the list here to help you plan your trip!");
+		 
+		
+			$replies["reply"]=array("Official Hotels"=>"Official Hotels","Visa / LOI"=>"Visa / LOI","About Singapore"=>"About Singapore");
+			$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"bid"=>$bid);	
+			echo json_encode($json_array);
+		}	
+		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+		{
+		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+			
+		}	
+		}
+		elseif(isset($_REQUEST['bid']) && $_REQUEST['bid']!= "")
+		{
+		
+		
+		$did=$_REQUEST['bid'];
+			$qu2="select * from `conferenceinfo_opt_two` where did='$did'";
+			$res2=$con->query($qu2);
+			$count2=$res2->num_rows;
+			if($count2 > 0)
+			{
+				$data2=$res2->fetch_assoc();
+				
+				$qu3="select * from `conferenceinfo_opt_two` where question like '%".$msg."%' and did='$did'";
+			$res3=$con->query($qu3);
+			$count3=$res3->num_rows;
+			if($count3>0)
+			{
+			$did=$_REQUEST['bid'];
+				$data3=$res3->fetch_assoc();
+				
+				$eid=$data3['id'];
+				
+				if($eid == 1)
+				{
+				$replies["text"]=array("textb"=>"You can register onsite if you did not pre-register online.");
+					$replies["reply"]=array("Registration fees"=>"Registration fees","Mode of payment"=>"Mode of payment","Currencies we accept"=>"Currencies we accept");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 2)
+				{ 
+				$replies["text"]=array("textb"=>"You can pre-register <a href=\"http://www.foodnhotelasia.com/fha-conference/conference-reg-fees/\" target=\"_blank\"> Here </a>");
+					$replies["reply"]=array("Registration status"=>"Registration status","Registration fees"=>"Registration fees","Special rates/ discount"=>"Special rates/ discount","Mode of payment"=>"Mode of payment","Issuing of receipt"=>"Issuing of receipt","Request for invoice"=>"Request for invoice","Cancellation policy and refund"=>"Cancellation policy and refund","Replacement of delegates"=>"Replacement of delegates","Changing of sessions"=>"Changing of sessions","Business Matching"=>"Business Matching");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 3)
+				{ 
+				$replies["text"]=array("textb"=>"There are special privileges for companies or trade associations coming in a group.");
+					$replies["reply"]=array("Registration status"=>"Registration status","Registration fees"=>"Registration fees","Special rates/ discount"=>"Special rates/ discount","Mode of payment"=>"Mode of payment","Issuing of receipt"=>"Issuing of receipt","Request for invoice"=>"Request for invoice","Cancellation policy and refund"=>"Cancellation policy and refund","Replacement of delegates"=>"Replacement of delegates","Changing of sessions"=>"Changing of sessions","Business Matching"=>"Business Matching");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 4)
+				{
+				
+					$replies["reply"]=array("e brochure"=>"e brochure","website"=>"website","mobile app"=>"mobile app");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 5 || $eid == 6 || $eid == 7 || $eid == 8 || $eid == 9)
+				{
+				
+					$replies["reply"]=array("e brochure"=>"e brochure");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 10 || $eid == 11 || $eid == 13 || $eid == 15 || $eid == 16 || $eid == 17 || $eid == 18 || $eid == 19)
+				{
+				
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$data3['answer'],"eid"=>$eid);	
+			echo json_encode($json_array);
+				}
+				elseif($eid == 12)
+				{
+				
+					$replies["reply"]=array("Location and collection time"=>"Location and collection time","Things to bring"=>"Things to bring","Attire"=>"Attire");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($eid == 14)
+				{
+				
+					$replies["reply"]=array("Driving to Singapore Expo"=>"Driving to Singapore Expo","Driving to Suntec Singapore"=>"Driving to Suntec Singapore");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"eid"=>$eid);	
+				echo json_encode($json_array);
+				}
+				elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+				{
+				$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+					
+				}
+			}
+			elseif(isset($_REQUEST['eid']) && $_REQUEST['eid']!= "")
+		{
+		$msg=$_REQUEST['msg'];
+		$eid=$_REQUEST['eid'];
+			$qu2="select * from `conferencrinfo_opt2` where fid='$eid'";
+			
+			$res2=$con->query($qu2);
+			$count2=$res2->num_rows;
+			if($count2 > 0)
+			{
+				$data2=$res2->fetch_assoc();
+				
+				$qu3="select * from `conferencrinfo_opt2` where question like '%".$msg."%' and fid='$eid'";
+			$res3=$con->query($qu3);
+			$count3=$res3->num_rows;
+			if($count3>0)
+			{
+			$eid=$_REQUEST['eid'];
+				$data3=$res3->fetch_assoc();
+				$tid=$data3['id'];
+				
+				if($tid >= 1 && $tid <= 29)
+				{
+				
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$data3['answer'],"fid"=>$tid);	
+			echo json_encode($json_array);
+				}
+				elseif($tid == 30 || $tid == 31)
+				{
+					$replies["reply"]=array("Nearest Carparks"=>"Nearest Carparks","Complimentary Parking"=>"Complimentary Parking");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"fid"=>$tid);	
+				echo json_encode($json_array);
+				}
+				
+				
+			}
+			elseif(isset($_REQUEST['fid']) && $_REQUEST['fid']!= "")
+			{
+				$msg=$_REQUEST['msg'];
+		$fid=$_REQUEST['fid'];
+			$qu2="select * from `conferenceinfo_basic` where jid='$fid'";
+			$res2=$con->query($qu2);
+			$count2=$res2->num_rows;
+			if($count2 > 0)
+			{
+			$msg=$_REQUEST['msg'];
+				$data2=$res2->fetch_assoc();
+				$fid=$_REQUEST['fid'];
+				$qu3="select * from `conferenceinfo_basic` where question like '%".$msg."%' and jid='$fid'";
+			$res3=$con->query($qu3);
+			$count3=$res3->num_rows;
+			if($count3>0)
+			{
+			$fid=$_REQUEST['fid'];
+				$data3=$res3->fetch_assoc();
+				$tid=$data3['id'];
+				if($tid == 1 || $tid == 2 || $tid == 3 || $tid == 4)
+				{
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$data3['answer']);	
+				echo json_encode($json_array);
+				}
+				
+				
+			}
+			
+			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+			{
+			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+			$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+					$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');		
+					echo json_encode($json_array);
+				
+			}
+			
+			
+			
+			}
+			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+			{
+			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+				
+			}
+			}
+			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+			{
+			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+				
+			}
+			}
+			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+			{
+			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+				
+			}
+		
+		}
+			elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+			{
+			$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+			$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+				
+			}
+			}
+			
+		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+		{
+		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+			
+		}
+		
+		
+		
+		}
+		
+		elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+		{
+		$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+		$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
+			
+		}
+	
+}
+
+
+
 elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
 {
 $replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
-$replies["reply"]=array("Exhibiting"=>"Exhibiting","Visiting"=>"Visiting","Competition"=>"Competition","Activities"=>"Activities","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
-		$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'');	
-		echo json_encode($json_array);
+$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+				$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+				echo json_encode($json_array);
 	
 }
 	else
