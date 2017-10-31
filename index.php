@@ -26,6 +26,7 @@ body {
     width: 270px;
     height: 470px;
 }
+
 .chatlog {
    font: 15px arial, sans-serif;
    height: 400px;
@@ -124,7 +125,24 @@ body {
     border-style: solid;
     border-color: #3181f6;
 	margin-bottom: 5%;
+	height:auto;
+	white-space: pre-line;
+	width:100%;
+	    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.btn{
+	
+	background-color: transparent;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #3181f6;
+	margin-bottom: 5%;
 	height:6%;
+	
+	
+	    padding-top: 2%;
+    padding-bottom: 2%;
 }
 </style>
 <script type="text/javascript">
@@ -132,7 +150,7 @@ body {
  	 $("#msg").focus();
  	 
  	 
- var initialmsg="<p class='chat-content bot'>Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for?<br><input type='button' value='Exhibiting' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Visiting' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Competition' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Activities' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Conference' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Media' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='General Information' name='PASS' onClick='myfunction(this.value)' class='txtopt'/></p>";
+ var initialmsg="<p class='chat-content bot'>Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for?<br><input type='button' value='Exhibiting at FHA' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Visiting FHA' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Know more about the competition' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Various activities @ FHA' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Conference' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='Media' name='PASS' onClick='myfunction(this.value)' class='txtopt'/><br><input type='button' value='General Information' name='PASS' onClick='myfunction(this.value)' class='txtopt'/></p>";
  
  $("div#chat").append(initialmsg);
         $('form').bind('submit', function (event) {
@@ -162,7 +180,7 @@ body {
 			  
 					     for(var key in obj.chat.bot.reply) {
 					    var value = obj.chat.bot.reply[key];
-					    //alert("value"+value);
+					    alert("value"+value);
 					     html +=           
 					                "<br><input type='button' value='"+value+"' name='PASS' onClick='myfunction(this.value)' class='txtopt'/>";
 									var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>"; 
@@ -174,7 +192,7 @@ body {
 				}	
 			
 			  //var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ html +"<\p>";
-			 //alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+			 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 			 if(typeof obj.chat.cid != "undefined"){
 			 	$("#Id").val(obj.chat.cid);
 			 }
@@ -222,7 +240,7 @@ body {
 
 
 function myfunction(str){
-	//alert(str);
+	alert(str);
 	var Id = $("#Id").val();
 	var UId = $("#UId").val(); 
 	var id = $("#id").val();
@@ -234,26 +252,30 @@ function myfunction(str){
 	var kid= $("#kid").val();
 	var lid= $("#lid").val();
 	var xid= $("#xid").val();
+	var aid= $("#aid").val();
+	var bid= $("#bid").val();
+	var eid= $("#eid").val();
+	var fid= $("#fid").val();
 	var html1="";
 	      $.ajax({
             type: 'POST',
             url: 'find.php',
-            data: {msg: str,Id:Id,id:id,UId:UId,vid:vid,wid:wid,rid:rid,sid:sid,hid:hid,kid:kid,lid:lid,xid:xid},
+            data: {msg: str,Id:Id,id:id,UId:UId,vid:vid,wid:wid,rid:rid,sid:sid,hid:hid,kid:kid,lid:lid,xid:xid,aid:aid,bid:bid,eid:eid,fid:fid},
             success: function (response) {
              $("#msg").val("");
-		     // alert(response);
+		      alert(response);
 			  var obj = jQuery.parseJSON(response);	
 			   var btntext ="";
 			if(typeof obj.chat.bot.text != "undefined"){
 				 html1+=obj.chat.bot.text["textb"];
 			}
-			//  alert(obj.chat.user+obj.chat.bot);
+			  alert(obj.chat.user+obj.chat.bot);
 			  
 			   if(typeof obj.chat.bot.reply != "undefined"){
 			  
                for(var key in obj.chat.bot.reply) {
     var value = obj.chat.bot.reply[key];
-    //alert("value"+value);
+    alert("value"+value);
      html1 +=           
                 "<br><input type='button' value='"+value+"' name='opt' class='txtopt' onClick='myfunction(this.value)' class='txtopt' />";
                 
@@ -294,13 +316,25 @@ function myfunction(str){
 				 if(typeof obj.chat.xid != "undefined"){
 				 	$("#xid").val(obj.chat.xid);
 				 }
+				 if(typeof obj.chat.aid != "undefined"){
+				 	$("#aid").val(obj.chat.aid);
+				 }
+				 if(typeof obj.chat.bid != "undefined"){
+				 	$("#bid").val(obj.chat.bid);
+				 }
+				 if(typeof obj.chat.eid != "undefined"){
+				 	$("#eid").val(obj.chat.eid);
+				 }
+				 if(typeof obj.chat.fid != "undefined"){
+				 	$("#fid").val(obj.chat.fid);
+				 }
  $("div#chat").append(txtval).html();
  $("#msg").focus();
 			  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
 			  }
 			  else{
 			  	 var txtval= "<p class='user'>"+obj.chat.user +"</p><p class='bot'>"+ obj.chat.bot +"<\p>";
-				 //alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
+				 alert( obj.chat.user +"\n"+obj.chat.bot+"\n");
 				 if(typeof obj.chat.cid != "undefined"){
 				 	$("#Id").val(obj.chat.cid);
 				 }
@@ -334,6 +368,18 @@ function myfunction(str){
 				  if(typeof obj.chat.xid != "undefined"){
 				 	$("#xid").val(obj.chat.xid);
 				 }
+				 if(typeof obj.chat.aid != "undefined"){
+				 	$("#aid").val(obj.chat.aid);
+				 }
+				  if(typeof obj.chat.bid != "undefined"){
+				 	$("#bid").val(obj.chat.bid);
+				 }
+				 if(typeof obj.chat.eid != "undefined"){
+				 	$("#eid").val(obj.chat.eid);
+				 }
+				 if(typeof obj.chat.fid != "undefined"){
+				 	$("#fid").val(obj.chat.fid);
+				 }
 				  $("div#chat").append(txtval).html();
 				  $("#msg").focus();
 				  $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);	
@@ -353,8 +399,9 @@ function myfunction(str){
 
 </div>
 <div class="uinput">
+
 <input name="msg" id="msg" placeholder="Enter message here.." size="50" autocomplete="off" />
-<input type='button' value='Reset' name='opt' class='txtopt' onClick='myfunction(this.value)' class='txtopt' />
+<input type='button' value='Reset' name='opt' class='btn' onClick='myfunction(this.value)' class='txtopt' />
 <div id="chtmsg" class="su"></div>
 </div>	
 </div>
@@ -370,6 +417,10 @@ function myfunction(str){
 <input type="hidden" name="kid" id="kid" />
 <input type="hidden" name="lid" id="lid" />
 <input type="hidden" name="xid" id="xid" />
+<input type="hidden" name="aid" id="aid" />
+<input type="hidden" name="bid" id="bid" />
+<input type="hidden" name="eid" id="eid" />
+<input type="hidden" name="fid" id="fid" />
 </form>
 
 </body>
