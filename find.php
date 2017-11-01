@@ -300,6 +300,14 @@ There are 6 specialised and 1 co-located event. Click here to find out more abou
 								}
 											
 							}
+							elseif($_REQUEST["msg"] == "Reset" || $_REQUEST["msg"] == "reset")
+							{
+								$replies["text"]=array("textb"=>"Hi! Welcome to FHA 2018! I am Faye. Feel free to ask me any question and I will answer you instantly, but first I would need to know why you are here for? ");
+								$replies["reply"]=array("Exhibiting at FHA"=>"Exhibiting at FHA","Visiting FHA"=>"Visiting FHA","Know more about the competition"=>"Know more about the competition","Various activities @ FHA"=>"Various activities @ FHA","Conference"=>"Conference","Media"=>"Media","General Information"=>"General Information");
+								$json_array["chat"]=array("user"=>$msg,"bot"=>$replies,"cid"=>'',"uid"=>'',"nid"=>'',"vid"=>'',"wid"=>'',"rid"=>'',"sid"=>'',"hid"=>'',"kid"=>'',"lid"=>'',"xid"=>'',"aid"=>'',"bid"=>'',"eid"=>'',"fid"=>'');		
+								echo json_encode($json_array);
+	
+							}
 							else
 							{
 								$msg=$_REQUEST["msg"];
