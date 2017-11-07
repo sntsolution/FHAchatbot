@@ -400,7 +400,7 @@ function myfunction(str){
 </div>
 <div class="uinput">
 
-<input name="msg" id="msg" placeholder="Enter message here.." size="50" autocomplete="off" />
+
 <input type='button' value='Reset' name='opt' class='btn' onClick='myfunction(this.value)' class='txtopt' />
 <div id="chtmsg" class="su"></div>
 </div>	
