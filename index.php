@@ -132,6 +132,7 @@ body {
     padding-bottom: 2%;
 }
 .btn{
+	    margin-top: 17px;
 	margin-left: 108px;
 	background-color: transparent;
     border-radius: 50px;
